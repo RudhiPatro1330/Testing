@@ -1,0 +1,27 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      java: corretto21
+
+  pre_build:
+    commands:
+      - echo "Checking Java version..."
+      - java -version
+      - cd Testing
+      - chmod +x mvnw
+
+  build:
+    commands:
+      - echo "Building Spring Boot application..."
+      - ./mvnw clean package -DskipTests
+
+  post_build:
+    commands:
+      - echo "Build completed successfully."
+
+artifacts:
+  files:
+    - 'Testing/target/*.jar'
+  discard-paths: yes
