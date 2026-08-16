@@ -9,12 +9,12 @@ phases:
     commands:
       - echo "Checking Java version..."
       - java -version
-      - cd Testing
-      - chmod +x mvnw
 
   build:
     commands:
       - echo "Building Spring Boot application..."
+      - cd Testing
+      - chmod +x mvnw
       - ./mvnw clean package -DskipTests
 
   post_build:
